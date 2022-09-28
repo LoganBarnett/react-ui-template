@@ -1,6 +1,10 @@
+import styles from './FormControls.css';
+import classnames from 'classnames';
+
 function FormControl({ label, children }) {
+  const className = classnames(styles.FormControl, styles.LabelText);
   return (
-    <label>
+    <label className={className}>
       {label}
       {children}
     </label>
@@ -39,13 +43,18 @@ export function SelectControl({
   );
 }
 
-export function  CheckboxControl({}){
-    return 
-    <fieldset>
-      <legend>Do you accept?</legend>
-      <label className={styles.OptionLabel}>
-        <input type="checkbox" />
-        Yes
+export function CheckboxControl({ legend, label, ...rest }) {
+  return (
+    <fieldset className={styles.CheckboxControl}>
+      <legend className={styles.LabelText}>{legend}</legend>
+      <label>
+        <input type="checkbox" {...rest} />
+        {label}
       </label>
     </fieldset>
-})
+  );
+}
+
+export function FormButton({ text }) {
+  return <button className={styles.FormButton}>{text}</button>;
+}
