@@ -9,6 +9,7 @@ npm install -D jest-environment-jsdom
 npm i -D @testing-library/react@latest
 npm i -D @testing-library/jest-dom
 npm i -D @testing-library/user-event
+npm i -D identity-obj-proxy
 ```
 
 ## Scripts
