@@ -3,7 +3,7 @@
   font-family: var(--label-font);
   font-size: 0.9em;
 
-  .Required::after {
+  &.Required::after {
     content: ' *';
     position: relative;
     top: -3px;
