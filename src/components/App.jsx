@@ -10,6 +10,7 @@ import Customers from './Sales/Customers.jsx';
 import Deposits from './Sales/Deposits.jsx';
 import Invoices from './Sales/Invoices.jsx';
 import Sales from './Sales/Sales.jsx';
+import Search from './Search/Search.jsx';
 import Users from './Users/Users.jsx';
 import Auth from './Auth/Auth.jsx';
 import AuthForm from './Auth/AuthForm.jsx';
@@ -21,6 +22,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />
+          <Route path="search" element={<Search />} />
           <Route path="sales" element={<Sales />}>
             <Route index element={<Deposits />} />
             <Route path="invoices" element={<Invoices />} />
