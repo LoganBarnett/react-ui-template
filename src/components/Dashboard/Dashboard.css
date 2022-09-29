@@ -1,9 +1,11 @@
 .Dashboard {
   form {
-    background: var(--light-accent-color);
-    display: grid;
-    gap: 10px;
     padding: 20px;
     width: 400px;
+    background: var(--light-accent-color);
+    box-shadow: var(--box-shadow);
+
+    display: grid;
+    gap: 10px;
   }
 }
