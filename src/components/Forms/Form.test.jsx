@@ -1,6 +1,5 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import { useEffect, useState } from 'react';
 import {
   CheckboxControl,
   FormButton,
@@ -8,24 +7,10 @@ import {
   SelectControl,
   TextAreaControl,
 } from './FormControls.jsx';
-
-function getValue(target) {
-  return target.type === 'checkbox' ? target.checked : target.value;
-}
+import { useForm } from './useForm.js';
 
 function Test({ onSubmit, formData }) {
-  const [data, setData] = useState(formData ?? {});
-
-  useEffect(() => {
-    setData(formData ?? {});
-  }, [formData]);
-
-  const handleChange = ({ target }) => {
-    setData((data) => ({
-      ...data,
-      [target.name]: getValue(target),
-    }));
-  };
+  const [data, handleChange] = useForm(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();

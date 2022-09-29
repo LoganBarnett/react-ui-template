@@ -5,9 +5,12 @@ import {
   SelectControl,
   TextAreaControl,
 } from '../Forms/FormControls.jsx';
+import { useForm } from '../Forms/useForm.js';
 import styles from './Dashboard.css';
 
 export default function Dashboard() {
+  const [data, handleChange] = useForm();
+
   return (
     <div className={styles.Dashboard}>
       <form>
@@ -16,6 +19,8 @@ export default function Dashboard() {
           name="name"
           placeholder="your name"
           required
+          value={data.name || ''}
+          onChange={handleChange}
         />
 
         <InputControl
@@ -24,6 +29,8 @@ export default function Dashboard() {
           type="date"
           name="date"
           placeholder="pick a date"
+          value={data.date || ''}
+          onChange={handleChange}
         />
 
         <SelectControl
@@ -31,6 +38,8 @@ export default function Dashboard() {
           required
           name="letter"
           placeholder="select a letter"
+          value={data.letter || ''}
+          onChange={handleChange}
         >
           <option value="1">A</option>
           <option value="2">B</option>
@@ -41,12 +50,21 @@ export default function Dashboard() {
           label="Bio"
           name="bio"
           placeholder="tell us about yourself"
+          value={data.bio || ''}
+          onChange={handleChange}
         />
 
-        <CheckboxControl legend="Do you accept?" label="Yes" />
+        <CheckboxControl
+          legend="Do you accept?"
+          label="Yes"
+          name="accepted"
+          checked={data.accepted || false}
+          onChange={handleChange}
+        />
 
         <FormButton>Submit</FormButton>
       </form>
+      <pre>{JSON.stringify(data, true, 2)}</pre>
     </div>
   );
 }
