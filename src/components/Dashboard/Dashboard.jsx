@@ -15,6 +15,7 @@ export default function Dashboard() {
           label="Name"
           name="name"
           placeholder="your name"
+          required
         />
 
         <InputControl

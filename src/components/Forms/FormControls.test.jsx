@@ -3,6 +3,7 @@ import {
   CheckboxControl,
   FormButton,
   InputControl,
+  LabelText,
   SelectControl,
   TextAreaControl,
 } from './FormControls.jsx';
@@ -88,7 +89,42 @@ test('Checkbox Control', async () => {
 
 test('Submit Button', async () => {
   render(<FormButton>Submit Me</FormButton>);
-
   const button = screen.getByRole('button');
   expect(button.textContent).toBe('Submit Me');
+});
+
+test('Label Text', async () => {
+  render(<LabelText text="label" />);
+  const label = screen.getByText('label');
+  expect(label).toBeTruthy();
+  expect(label.classList.contains('Required')).toBe(false);
+});
+
+test('Required Label Text', async () => {
+  render(<LabelText text="label" required />);
+  const label = screen.getByText('label');
+  expect(label).toBeTruthy();
+  expect(label.classList.contains('Required')).toBe(true);
+});
+
+function testRequired(controlType, Component) {
+  test(`Required ${controlType} Control`, async () => {
+    render(<Component legend="label" label="label" required />);
+
+    const label = screen.getByText('label');
+    expect(label).toBeTruthy();
+    expect(label.classList.contains('Required')).toBe(true);
+  });
+}
+
+testRequired('Input', InputControl);
+testRequired('Select', InputControl);
+testRequired('TextArea', InputControl);
+
+test('Required Checkbox Control', async () => {
+  render(<CheckboxControl legend="label" required />);
+
+  const label = screen.getByText('label');
+  expect(label).toBeTruthy();
+  expect(label.classList.contains('Required')).toBe(true);
 });

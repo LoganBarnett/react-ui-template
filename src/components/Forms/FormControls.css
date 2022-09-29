@@ -2,6 +2,13 @@
   color: var(--caption-color);
   font-family: var(--label-font);
   font-size: 0.9em;
+
+  .Required::after {
+    content: ' *';
+    position: relative;
+    top: -3px;
+    color: rgb(190, 63, 63);
+  }
 }
 
 .FormControl {
