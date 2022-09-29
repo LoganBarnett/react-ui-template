@@ -87,7 +87,7 @@ test('Checkbox Control', async () => {
 });
 
 test('Submit Button', async () => {
-  render(<FormButton text="Submit Me" />);
+  render(<FormButton>Submit Me</FormButton>);
 
   const button = screen.getByRole('button');
   expect(button.textContent).toBe('Submit Me');
