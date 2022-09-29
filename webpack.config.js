@@ -33,10 +33,14 @@ module.exports = {
       patterns: [{ from: 'public' }],
     }),
     new webpack.ProvidePlugin({
+      process: 'process/browser',
       React: 'react',
     }),
   ],
   resolve: {
+    alias: {
+      process: 'process/browser',
+    },
     extensions: ['.js', '.jsx'],
   },
   module: {
