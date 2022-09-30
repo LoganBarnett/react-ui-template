@@ -8,7 +8,6 @@ export default function SearchForm({ onSubmit }) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formDataObject = Object.fromEntries(formData);
-        setSearchForm(formDataObject);
         onSubmit(formDataObject);
     }
     return <form onSubmit={formSubmit}>
