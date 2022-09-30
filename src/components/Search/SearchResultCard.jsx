@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './Search.css';
 
 export default function SearchResultCard({pokemon}) {
-    return <article>
+    return <li className={styles.SearchResultCard}>
         {pokemon.pokemon}
-    </article>
+    </li>
 }
