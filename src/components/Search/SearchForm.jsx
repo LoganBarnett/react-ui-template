@@ -1,11 +1,14 @@
 import React from 'react';
 import { InputControl, FormButton } from '../Forms/FormControls.jsx';
+import useSearchForm from '../../hooks/use-search-form.js';
 
-export default function SearchForm({ pokemon, onSubmit, setPokemon }) {
+export default function SearchForm({ onSubmit }) {
+    const { pokemon, setPokemon, searchForm, setSearchForm } = useSearchForm();
     const formSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formDataObject = Object.fromEntries(formData);
+        setSearchForm(formDataObject);
         onSubmit(formDataObject);
     }
     return <form onSubmit={formSubmit}>
