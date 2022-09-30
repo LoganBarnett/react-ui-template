@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { search } from '../services/pokedex';
+import { useInView } from 'react-intersection-observer';
 
 export default function useSearchResults() {
     const [ searchResults, setSearchResults ] = useState([]);
@@ -15,8 +16,15 @@ export default function useSearchResults() {
         setSearchResults(searchResults.concat(moreResults.results));
     }
 
+    const infiniteScrollRef = useInView({
+        triggerOnce: true,
+        onChange: (inView) => {
+            if (inView) nextPage();
+        },
+    }).ref;
+
     const searchPokedex = async (searchObj) => {
-        if(searchObj.page == null) {
+        if (searchObj.page == null) {
             searchObj.page = 1;
         }
         setSearchParams(searchObj);
@@ -35,5 +43,6 @@ export default function useSearchResults() {
         searchResults,
         setSearchResults,
         searchPokedex,
+        infiniteScrollRef,
     }
 }

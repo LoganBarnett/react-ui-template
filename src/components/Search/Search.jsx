@@ -6,6 +6,7 @@ import { FormButton } from '../Forms/FormControls.jsx';
 
 export default function Search() {
     const {
+      infiniteScrollRef,
       nextPage,
       pokemon,
       setPokemon,
@@ -15,7 +16,7 @@ export default function Search() {
     } = useSearchResults();
     return <section>
       <SearchForm pokemon={pokemon} setPokemon={setPokemon} onSubmit={searchPokedex} />
-      <SearchResults results={searchResults} />
+      <SearchResults results={searchResults} infiniteScrollRef={infiniteScrollRef}/>
       <FormButton onClick={nextPage}>Moar</FormButton>
     </section>
 }
